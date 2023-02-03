@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-  <TextView
+ <!-- <TextView
       android:id="@+id/normal"
       android:layout_width="200dp"
       android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
       android:text="Widht match_parent"
       android:textColor="#FFF"
       android:textSize="26sp"
-      android:textStyle="italic" />
+      android:textStyle="italic" />-->
 
   <!-- <TextView
         android:id="@+id/textView"
