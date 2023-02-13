@@ -5,30 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:layout_alignEnd="@+id/button3"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="0dp"
-        android:text="Give it back to me" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:layout_alignEnd="@+id/button2"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="0dp"
-        android:text="Catch" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="376dp"
@@ -140,32 +116,49 @@
             android:text="Hard" />
     </RadioGroup>
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
+
+    <LinearLayout
+        android:layout_width="367dp"
+        android:layout_height="304dp"
         android:layout_below="@+id/RadioGroup"
         android:layout_alignStart="@+id/RadioGroup"
         android:layout_alignEnd="@+id/RadioGroup"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="341dp"
-        android:background="?android:attr/listDivider"
-        android:visibility="visible" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="46dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/divider3"
-        android:layout_alignStart="@+id/divider3"
-        android:layout_alignTop="@+id/divider3"
-        android:layout_alignEnd="@+id/divider3"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="0dp"
-        android:text="Start Simple" />
+        <EditText
+            android:id="@+id/et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Simple" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Catch" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Give it to me back" />
+
+    </LinearLayout>
 
 </RelativeLayout>
