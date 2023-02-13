@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,8 +28,18 @@ public class Calculator extends AppCompatActivity {
         setContentView(R.layout.activity_calculator);
 
         final Button calculate = (Button) findViewById(R.id.calc);
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(LogcatTag, "Button have been pushed");
+                calculateAnswer();
+                Intent i = new Intent(Calculator.this, MainActivity.class); // Написать письмо
+                startActivity(i); // Отправить письмо
+            }
+        });
+    }
 
-  /*   @Override
+     @Override
     protected void onStart() {
         super.onStart();
         Log.d(LifecycleTag, "I am onStart(), and I am Started");
@@ -57,8 +68,9 @@ public class Calculator extends AppCompatActivity {
         super.onResume();
         Log.d(LifecycleTag, "I am onResume, an continue the party");
     }
-*/
 
+
+        // Intent - посылка
 
         //context training
      //   TextView textView = new TextView(this);
@@ -73,14 +85,6 @@ public class Calculator extends AppCompatActivity {
 
 
         ///
-        calculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(LogcatTag, "Button have been pushed");
-                calculateAnswer();
-            }
-        });
-    }
 
     private void calculateAnswer() {
         EditText numOne = (EditText) findViewById(R.id.editTextNumberDecimal);
