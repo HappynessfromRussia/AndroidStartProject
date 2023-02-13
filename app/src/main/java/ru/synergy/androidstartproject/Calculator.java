@@ -1,12 +1,16 @@
 package ru.synergy.androidstartproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +21,14 @@ public class Calculator extends AppCompatActivity {
     private static final String LifecycleTag = "LIFECYCLE";
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(LifecycleTag, "I am onCreate(), and I am started ");
+        setContentView(R.layout.activity_calculator);
+
+        final Button calculate = (Button) findViewById(R.id.calc);
+
+  /*   @Override
     protected void onStart() {
         super.onStart();
         Log.d(LifecycleTag, "I am onStart(), and I am Started");
@@ -45,15 +57,22 @@ public class Calculator extends AppCompatActivity {
         super.onResume();
         Log.d(LifecycleTag, "I am onResume, an continue the party");
     }
+*/
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.d(LifecycleTag, "I am onCreate(), and I am started ");
-        setContentView(R.layout.activity_calculator);
 
-        final Button calculate = (Button) findViewById(R.id.calc);
+        //context training
+     //   TextView textView = new TextView(this);
+     //   ListAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),);
 
+        // Доступ из класса Активити наследник Контекс
+      //  getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        // Sered prefs
+
+       // SharedPreferences prefs = getApplicationContext().getSharedPreferences("PREFS", MODE_PRIVATE);
+
+
+        ///
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,5 +133,9 @@ public class Calculator extends AppCompatActivity {
 
         Log.d(LogcatTag, "The result of operation" + solution);
         answer.setText("The answer is:" + solution);
+
+        Context contextApp = getApplicationContext();
+        Context context = getBaseContext();
+
     }
 }
