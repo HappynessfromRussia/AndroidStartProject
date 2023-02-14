@@ -34,7 +34,7 @@ public class Calculator extends AppCompatActivity {
                 Log.d(LogcatTag, "Button have been pushed");
                 calculateAnswer();
                 Intent i = new Intent(Calculator.this, MainActivity.class); // Написать письмо
-                startActivity(i); // Отправить письмо
+               // startActivity(i); // Отправить письмо
             }
         });
     }
@@ -97,22 +97,29 @@ public class Calculator extends AppCompatActivity {
 
         TextView answer = (TextView) findViewById(R.id.result);
 
-        Log.d(LogcatTag, "All Views have been founded"); 
+        Log.d(LogcatTag, "All Views have been founded");
 
+     /*   try { - если
+            int a = 25/0; это разделить будут делить на 0
+        } catch (ArithmeticException e){   то улови                       Арифметическое исключение.
+            e.getStackTrace(); и используй этот метод
+        }
+*/
         float numone = 0;
         float numtwo = 0;
         String num1 = numOne.getText().toString();
         String num2 = numTwo.getText().toString();
-        if (num1.equals(" ") && num1 != null) {
+        if (!num1.equals(" ") && num1 != null) {
             numone = Integer.parseInt(numOne.getText().toString());
         }
-        if(num2.equals(" ") && num2 != null) {
+        if(!num2.equals(" ") && num2 != null) {
             numtwo = Integer.parseInt(numTwo.getText().toString());
         }
         Log.d(LogcatTag, "Successfully grabbed data from input fields");
         Log.d(LogcatTag, "numone is: " + numone + " ; "+" numtwo is: " + numtwo);
 
         float solution = 0;
+
 
         if (add.isChecked()){
             Log.d(LogcatTag, "Operation is add ");
