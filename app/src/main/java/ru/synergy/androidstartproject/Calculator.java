@@ -16,6 +16,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class Calculator extends AppCompatActivity {
 
     private static final String LogcatTag = "CALCULATOR_ACTIVITY";
@@ -32,7 +34,29 @@ public class Calculator extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(LogcatTag, "Button have been pushed");
-                calculateAnswer();
+                try {
+                    calculateAnswer();
+               /* }
+                catch (IOException e){
+                    Toast.makeText(Calculator.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+                catch (ArithmeticException e){
+                    Toast.makeText(Calculator.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    finish();
+                }*/
+                } catch (Exception e){
+
+                    // прерывание
+                    //  Log.d("EXCEPTION", "I am maybe exception"); - строчка для вывода в логкат
+                 //   e.printStackTrace();
+                 //   Toast.makeText(Calculator.this, e.getMessage(), Toast.LENGTH_LONG).show();
+
+                    // Восстановление
+                    e.printStackTrace();
+                    Toast.makeText(Calculator.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    dropFields();
+
+                }
                 Intent i = new Intent(Calculator.this, MainActivity.class); // Написать письмо
                // startActivity(i); // Отправить письмо
             }
@@ -83,10 +107,7 @@ public class Calculator extends AppCompatActivity {
 
        // SharedPreferences prefs = getApplicationContext().getSharedPreferences("PREFS", MODE_PRIVATE);
 
-
-        ///
-
-    private void calculateAnswer() {
+    private void dropFields(){
         EditText numOne = (EditText) findViewById(R.id.editTextNumberDecimal);
         EditText numTwo = (EditText) findViewById(R.id.editTextNumberDecimal2);
 
@@ -95,6 +116,28 @@ public class Calculator extends AppCompatActivity {
         RadioButton multiply = (RadioButton) findViewById(R.id.multiply);
         RadioButton divide = (RadioButton) findViewById(R.id.divide);
 
+        numOne.setText("0");
+        numTwo.setText("0");
+        add.setChecked(true);
+
+        TextView answer = (TextView) findViewById(R.id.result);
+
+        answer.setText("Now we have a problems, try again later");
+    }
+
+    private void calculateAnswer() throws ArithmeticException, IOException {
+        EditText numOne = (EditText) findViewById(R.id.editTextNumberDecimal);
+        EditText numTwo = (EditText) findViewById(R.id.editTextNumberDecimal2);
+
+        RadioButton add = (RadioButton) findViewById(R.id.add);
+        RadioButton sub = (RadioButton) findViewById(R.id.subtract);
+        RadioButton multiply = (RadioButton) findViewById(R.id.multiply);
+        RadioButton divide = (RadioButton) findViewById(R.id.divide);
+
+        numOne.setText("0");
+        numTwo.setText("0");
+        add.setChecked(true);
+
         TextView answer = (TextView) findViewById(R.id.result);
 
         Log.d(LogcatTag, "All Views have been founded");
@@ -102,9 +145,19 @@ public class Calculator extends AppCompatActivity {
      /*   try { - если
             int a = 25/0; это разделить будут делить на 0
         } catch (ArithmeticException e){   то улови                       Арифметическое исключение.
-            e.getStackTrace(); и используй этот метод
+            e.printStackTrace(); и используй этот метод
         }
 */
+
+       // try {
+       //     throw new ArithmeticException("I am generated exception");
+       // } catch (ArithmeticException e){
+           // e.printStackTrace();
+         //   Toast.makeText(this, "There is the problem inside the app", Toast.LENGTH_SHORT).show(); Аварийное завершение приложения
+         //   finish();
+      //  }
+
+
         float numone = 0;
         float numtwo = 0;
         String num1 = numOne.getText().toString();
@@ -148,5 +201,9 @@ public class Calculator extends AppCompatActivity {
         Context contextApp = getApplicationContext();
         Context context = getBaseContext();
 
+        switch( (int)Math.random()*2){
+            case 0 : throw new ArithmeticException("I am generated exception");
+            case 1 : throw new IOException("i am generated ioexception");
+        }
     }
 }
