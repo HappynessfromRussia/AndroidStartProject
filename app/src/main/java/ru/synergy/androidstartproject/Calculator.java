@@ -53,7 +53,7 @@ public class Calculator extends AppCompatActivity {
 
                     // Восстановление
                     e.printStackTrace();
-                    Toast.makeText(Calculator.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Calculator.this, e.getMessage() + " of class: " + e.getClass(), Toast.LENGTH_LONG).show();
                     dropFields();
 
                 }
@@ -201,7 +201,7 @@ public class Calculator extends AppCompatActivity {
         Context contextApp = getApplicationContext();
         Context context = getBaseContext();
 
-        switch( (int)Math.random()*2){
+        switch((int)(Math.random()*3)) {
             case 0 : throw new ArithmeticException("I am generated exception");
             case 1 : throw new IOException("i am generated ioexception");
         }
